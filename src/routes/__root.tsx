@@ -6,9 +6,9 @@ import '../styles.css'
 import { routerLogger } from '#/lib/logger'
 
 /**
- * 
+ *
  * @param param0 adds a debug log on every navigation and an error log when something bubbles up to the global error boundary.
- * @returns 
+ * @returns
  */
 function RootErrorBoundary({ error }: { error: Error }) {
   const router = useRouter()

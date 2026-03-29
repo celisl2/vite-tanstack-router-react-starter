@@ -1,7 +1,3 @@
 export default function Footer() {
-  return (
-    <footer>
-      todo
-    </footer>
-  )
+  return <footer>todo</footer>
 }

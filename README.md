@@ -42,8 +42,7 @@ Create a new file in `src/routes/` and TanStack Router picks it up automatically
 
 ```tsx
 import { Link } from '@tanstack/react-router'
-
-<Link to="/dashboard">Dashboard</Link>
+;<Link to="/dashboard">Dashboard</Link>
 ```
 
 ### Layouts
@@ -56,7 +55,7 @@ The root layout lives in `src/routes/__root.tsx`. Anything rendered there appear
 
 Vite handles environment variables at build time with no extra packages needed. Variables are statically replaced in your bundle — there is no runtime injection.
 
-### The VITE_ prefix rule
+### The VITE\_ prefix rule
 
 Only variables prefixed with `VITE_` are exposed to the browser. Anything without the prefix is intentionally invisible to the client, even if you try to access it.
 
@@ -85,10 +84,10 @@ A typical setup: put public defaults in `.env`, personal secrets in `.env.local`
 Vite exposes these without any setup:
 
 ```ts
-import.meta.env.MODE      // 'development' | 'production' | 'test'
-import.meta.env.DEV       // true during pnpm dev
-import.meta.env.PROD      // true after pnpm build
-import.meta.env.BASE_URL  // base path from vite.config.ts
+import.meta.env.MODE // 'development' | 'production' | 'test'
+import.meta.env.DEV // true during pnpm dev
+import.meta.env.PROD // true after pnpm build
+import.meta.env.BASE_URL // base path from vite.config.ts
 ```
 
 ### Adding your own variables
@@ -151,15 +150,14 @@ for (const key of requiredEnvVars) {
 
 ### What to commit
 
-| File | Commit? |
-|---|---|
-| `.env` | Yes — safe defaults only, no secrets |
-| `.env.local` | Never — add to `.gitignore` |
-| `.env.production` | Yes — if it contains no secrets |
-| `.env.*.local` | Never — add to `.gitignore` |
+| File              | Commit?                              |
+| ----------------- | ------------------------------------ |
+| `.env`            | Yes — safe defaults only, no secrets |
+| `.env.local`      | Never — add to `.gitignore`          |
+| `.env.production` | Yes — if it contains no secrets      |
+| `.env.*.local`    | Never — add to `.gitignore`          |
 
 Your `.gitignore` should already contain `*.local` if you used a Vite scaffold.
-
 
 All client-side variables must be prefixed with `VITE_`. Variables without this prefix are build-time only and never sent to the browser.
 
@@ -252,7 +250,13 @@ function UserList() {
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Failed to load users.</p>
 
-  return <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>
+  return (
+    <ul>
+      {data.map((u) => (
+        <li key={u.id}>{u.name}</li>
+      ))}
+    </ul>
+  )
 }
 ```
 
@@ -266,8 +270,7 @@ function useCreateUser() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (payload: { name: string; email: string }) =>
-      api.post('/users', payload),
+    mutationFn: (payload: { name: string; email: string }) => api.post('/users', payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
     },
@@ -462,8 +465,7 @@ Append query params to any image import to transform it at build time:
 ```tsx
 // Resize to 800px wide and convert to WebP
 import heroImage from './assets/hero.jpg?w=800&format=webp'
-
-<img src={heroImage} width={800} alt="Hero" />
+;<img src={heroImage} width={800} alt="Hero" />
 ```
 
 ### Responsive images with srcset
@@ -473,8 +475,7 @@ import { Picture, Source } from 'vite-imagetools'
 import heroAvif from './assets/hero.jpg?w=400;800;1200&format=avif'
 import heroWebp from './assets/hero.jpg?w=400;800;1200&format=webp'
 import heroFallback from './assets/hero.jpg?w=800'
-
-<picture>
+;<picture>
   <source srcSet={heroAvif} type="image/avif" />
   <source srcSet={heroWebp} type="image/webp" />
   <img src={heroFallback} alt="Hero" loading="lazy" decoding="async" />
@@ -491,8 +492,7 @@ CSS files ending in `.module.css` are scoped locally. Class names are available 
 
 ```tsx
 import styles from './Button.module.css'
-
-<button className={styles.primaryButton}>Click me</button>
+;<button className={styles.primaryButton}>Click me</button>
 ```
 
 ---

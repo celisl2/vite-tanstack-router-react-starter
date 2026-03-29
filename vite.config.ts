@@ -15,20 +15,21 @@ const config = defineConfig({
       babel: {
         plugins: ['babel-plugin-react-compiler'],
       },
-    },
-  ),
-  
+    }),
   ],
   build: {
     rollupOptions: {
       output: {
-        manualChunks: { vendor: ['react','react-dom'], tanstack: ['@tanstack/react-router','@tanstack/react-query'] }
-      }
-    }
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          tanstack: ['@tanstack/react-router', '@tanstack/react-query'],
+        },
+      },
+    },
   },
   css: {
     modules: {
-      localsConvention: 'camelCaseOnly', 
+      localsConvention: 'camelCaseOnly',
     },
   },
   test: {

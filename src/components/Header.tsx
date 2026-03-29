@@ -1,9 +1,3 @@
-
-
 export default function Header() {
-  return (
-    <header>
-      todo
-    </header>
-  )
+  return <header>todo</header>
 }
