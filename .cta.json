@@ -1,0 +1,19 @@
+{
+  "projectName": "vite-react-tanstack-router-starter",
+  "mode": "file-router",
+  "typescript": true,
+  "packageManager": "pnpm",
+  "includeExamples": false,
+  "tailwind": false,
+  "addOnOptions": {},
+  "envVarValues": {},
+  "git": false,
+  "routerOnly": true,
+  "version": 1,
+  "framework": "react",
+  "chosenAddOns": [
+    "eslint",
+    "compiler",
+    "tanstack-query"
+  ]
+}
